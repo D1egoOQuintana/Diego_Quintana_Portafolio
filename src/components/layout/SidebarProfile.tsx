@@ -41,7 +41,12 @@ export const SidebarProfile = () => {
           <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-blue-400 transition-colors">
             <Linkedin size={18} /> LinkedIn
           </a>
-          <a href="mailto:diego.qgg@gmail.com" className="flex items-center gap-2 text-muted-foreground hover:text-yellow-400 transition-colors">
+          <a 
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=diego.qgg@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-muted-foreground hover:text-yellow-400 transition-colors"
+          >
             <Mail size={18} /> Email
           </a>
           <a href={profile.socials.cv} download="CV_Luis_Quintana.pdf" className="flex items-center gap-2 text-muted-foreground hover:text-purple-400 transition-colors">

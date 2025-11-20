@@ -4,20 +4,41 @@ import { profile } from "@/data/profile";
 
 export const helpCommand = (): CommandResult => {
   const banner = `
-╔═══════════════════════════════════════════════════════════════╗
-║                     COMANDOS DISPONIBLES                    ║
-╚═══════════════════════════════════════════════════════════════╝
+
+COMANDOS DISPONIBLES
+
+
 `;
   const commands = [
-    "  ✨ help      → Muestra esta lista de comandos y ejemplos",
-    "  📁 projects  → Lista todos los proyectos disponibles",
-    "  🔍 open      → Abre detalles de un proyecto (Ej: open cubicutec)",
-    "  👤 about     → Información sobre mí y mi experiencia",
-    "  📧 contact   → Mis datos de contacto y redes sociales",
-    "  🎨 theme     → Cambia el tema (dark, light, system)",
-    "  🧹 clear     → Limpia la pantalla (mantiene historial)",
+    "  help",
+    "     Muestra comandos",
     "",
-    "  💡 Tip: Usa TAB para autocompletar y ↑/↓ para historial"
+    "  projects",
+    "     Lista proyectos",
+    "",
+    "  open <slug>",
+    "     Abre proyecto",
+    "     Ej: open cubicutec",
+    "",
+    "  about",
+    "     Info sobre mí",
+    "",
+    "  skills",
+    "     Mis habilidades",
+    "",
+    "  contact",
+    "     Mis contactos",
+    "",
+    "  theme <modo>",
+    "     Cambia tema",
+    "     dark/light/system",
+    "",
+    "  clear",
+    "     Limpia pantalla",
+    "",
+    "  Tip:",
+    "  TAB: autocompletar",
+    "  ↑/↓: historial"
   ];
   return {
     type: 'text',
@@ -60,6 +81,16 @@ export const aboutCommand = (): CommandResult => {
   };
 };
 
+export const skillsCommand = (): CommandResult => {
+  return {
+    type: 'component',
+    output: JSON.stringify({
+      type: 'skills',
+      skills: profile.skills
+    })
+  };
+};
+
 export const contactCommand = (): CommandResult => {
   return {
     type: 'component',
@@ -75,17 +106,11 @@ export const themeCommand = (args: string[]): CommandResult => {
   const theme = args[0];
   
   if (!theme || !validThemes.includes(theme)) {
-    return { type: 'error', output: "❌ Argumento inválido.\n\n💡 Uso: theme <modo>\nOpciones: dark, light, system" };
+    return { type: 'error', output: "Argumento inválido.\n\nUso: theme <modo>\nOpciones: dark, light, system" };
   }
-  
-  const themeIcons: Record<string, string> = {
-    dark: '🌙',
-    light: '☀️',
-    system: '🖥️'
-  };
   
   return {
     type: 'success',
-    output: `✨ Tema cambiado exitosamente\n\n${themeIcons[theme]} Modo: ${theme}\n\n🎨 La interfaz se actualizará automáticamente`
+    output: `Tema cambiado exitosamente\n\nModo: ${theme}\n\nLa interfaz se actualizará automáticamente`
   };
 };

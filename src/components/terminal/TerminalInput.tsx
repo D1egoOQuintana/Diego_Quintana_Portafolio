@@ -82,20 +82,21 @@ export const TerminalInput = () => {
     addToCommandHistory(trimmedVal);
     
     const [cmd, ...args] = trimmedVal.split(" ");
+    const cmdLower = cmd.toLowerCase();
     
-    if (cmd === "clear") {
+    if (cmdLower === "clear") {
         clearHistory();
         addEntry({ command: trimmedVal, output: "Pantalla limpia. Historial intacto (↑ para ver).", type: 'success' });
         setVal("");
         return;
     }
 
-    const commandObj = commands[cmd];
+    const commandObj = commands[cmdLower];
     if (commandObj) {
         const result = commandObj.action(args);
         
         // Handle Theme Switching Side Effect
-        if (cmd === 'theme' && result.type !== 'error') {
+        if (cmdLower === 'theme' && result.type !== 'error') {
             const themeArg = args[0];
             if (themeArg && ['dark', 'light', 'system'].includes(themeArg)) {
                 setTheme(themeArg);
@@ -118,16 +119,16 @@ export const TerminalInput = () => {
   };
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit} className="flex gap-2 items-center mt-2">
-      <span className="text-accent">➜</span>
-      <span className="text-blue-400">~</span>
+    <form ref={formRef} onSubmit={handleSubmit} className="flex gap-1 sm:gap-2 items-center mt-2 sm:mt-3">
+      <span className="text-accent text-xs sm:text-sm md:text-base">$</span>
+      <span className="text-blue-400 text-xs sm:text-sm md:text-base">~</span>
       <input
         ref={inputRef}
         type="text"
         value={val}
         onChange={(e) => setVal(e.target.value)}
         onKeyDown={handleKeyDown}
-        className="bg-transparent border-none outline-none text-foreground flex-1 font-mono"
+        className="bg-transparent border-none outline-none text-foreground flex-1 font-mono text-xs sm:text-sm md:text-base"
         autoFocus
         placeholder="Type a command..."
       />

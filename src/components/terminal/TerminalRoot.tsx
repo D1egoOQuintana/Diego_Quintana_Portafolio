@@ -40,40 +40,40 @@ export const TerminalRoot = () => {
  |_____|____/ \\__\_\\
 `}
         <div className="text-muted-foreground font-normal mt-6 text-sm md:text-base space-y-2">
-          <p className="text-success font-semibold">✓ System initialized</p>
+          <p className="text-success font-semibold">System initialized</p>
           <p>Welcome, <span className="text-foreground font-bold">Luis Diego Quintana</span> | Access: <span className="text-success">ADMIN</span></p>
           
-          <div className="mt-6 p-4 border border-accent/30 rounded-md bg-accent/5">
-            <p className="text-accent font-bold mb-3">📖 GUÍA DE USO / USER GUIDE</p>
-            <div className="space-y-2 text-xs md:text-sm">
-              <p className="flex items-start gap-2">
-                <span className="text-accent font-bold">•</span>
-                <span><span className="text-foreground font-semibold">Comandos Básicos:</span> Escribe <span className="text-accent font-mono">'help'</span> para ver todos los comandos disponibles</span>
+          <div className="mt-4 sm:mt-6 p-2.5 sm:p-3 md:p-4 border border-accent/30 rounded-md bg-accent/5">
+            <p className="text-accent font-bold mb-2 sm:mb-3 text-[10px] sm:text-xs md:text-sm">GUÍA DE USO</p>
+            <div className="space-y-1.5 sm:space-y-2 text-[9px] sm:text-[10px] md:text-xs overflow-x-auto">
+              <p className="flex items-start gap-1.5 sm:gap-2 min-w-0">
+                <span className="text-accent font-bold shrink-0">•</span>
+                <span className="min-w-0"><span className="text-foreground font-semibold">Comandos Básicos:</span> Escribe <span className="text-accent font-mono">'help'</span> para ver todos los comandos</span>
               </p>
-              <p className="flex items-start gap-2">
-                <span className="text-accent font-bold">•</span>
-                <span><span className="text-foreground font-semibold">Navegación:</span> Usa <span className="text-accent font-mono">↑ ↓</span> para navegar por el historial de comandos</span>
+              <p className="flex items-start gap-1.5 sm:gap-2 min-w-0">
+                <span className="text-accent font-bold shrink-0">•</span>
+                <span className="min-w-0"><span className="text-foreground font-semibold">Navegación:</span> Usa <span className="text-accent font-mono">↑ ↓</span> para navegar por el historial</span>
               </p>
-              <p className="flex items-start gap-2">
-                <span className="text-accent font-bold">•</span>
-                <span><span className="text-foreground font-semibold">Autocompletado:</span> Presiona <span className="text-accent font-mono">Tab</span> para autocompletar comandos</span>
+              <p className="flex items-start gap-1.5 sm:gap-2 min-w-0">
+                <span className="text-accent font-bold shrink-0">•</span>
+                <span className="min-w-0"><span className="text-foreground font-semibold">Autocompletado:</span> Presiona <span className="text-accent font-mono">Tab</span> para autocompletar</span>
               </p>
-              <p className="flex items-start gap-2">
-                <span className="text-accent font-bold">•</span>
-                <span><span className="text-foreground font-semibold">Proyectos:</span> Escribe <span className="text-accent font-mono">'projects'</span> para ver mi portafolio</span>
+              <p className="flex items-start gap-1.5 sm:gap-2 min-w-0">
+                <span className="text-accent font-bold shrink-0">•</span>
+                <span className="min-w-0"><span className="text-foreground font-semibold">Proyectos:</span> Escribe <span className="text-accent font-mono">'projects'</span> para ver portafolio</span>
               </p>
-              <p className="flex items-start gap-2">
-                <span className="text-accent font-bold">•</span>
-                <span><span className="text-foreground font-semibold">Tema:</span> Cambia entre modo claro/oscuro con el botón en el sidebar</span>
+              <p className="flex items-start gap-1.5 sm:gap-2 min-w-0">
+                <span className="text-accent font-bold shrink-0">•</span>
+                <span className="min-w-0"><span className="text-foreground font-semibold">Tema:</span> Cambia modo claro/oscuro en el sidebar</span>
               </p>
-              <p className="flex items-start gap-2">
-                <span className="text-accent font-bold">•</span>
-                <span><span className="text-foreground font-semibold">Perfil:</span> Haz clic en mi foto para verla ampliada</span>
+              <p className="flex items-start gap-1.5 sm:gap-2 min-w-0">
+                <span className="text-accent font-bold shrink-0">•</span>
+                <span className="min-w-0"><span className="text-foreground font-semibold">Perfil:</span> Haz clic en mi foto para ampliarla</span>
               </p>
             </div>
           </div>
 
-          <p className="mt-4 border-l-2 border-accent pl-4 italic opacity-80">
+          <p className="mt-3 sm:mt-4 border-l-2 border-accent pl-3 sm:pl-4 italic opacity-80 text-[10px] sm:text-xs md:text-sm">
             "Building digital experiences with code and creativity."
           </p>
           <p className="mt-4 text-center">

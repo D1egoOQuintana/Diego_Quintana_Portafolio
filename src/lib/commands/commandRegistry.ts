@@ -23,6 +23,11 @@ export const commands: Record<string, Command> = {
     description: "Sobre mí.",
     action: () => processors.aboutCommand()
   },
+  skills: {
+    keyword: "skills",
+    description: "Mis habilidades técnicas.",
+    action: () => processors.skillsCommand()
+  },
   contact: {
     keyword: "contact",
     description: "Formas de contacto.",
