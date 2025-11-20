@@ -8,10 +8,13 @@ export const TerminalRoot = () => {
   const { history } = useTerminalStore();
   const containerRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
+  const [initialHistoryCount, setInitialHistoryCount] = useState(0);
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
+    // Store the initial history count on mount
+    setInitialHistoryCount(history.length);
   }, []);
 
   // Scroll to bottom whenever history changes
@@ -82,8 +85,12 @@ export const TerminalRoot = () => {
         </div>
       </div>
 
-      {history.map((entry) => (
-        <TerminalLine key={entry.id} entry={entry} />
+      {history.map((entry, index) => (
+        <TerminalLine 
+          key={entry.id} 
+          entry={entry} 
+          skipAnimation={index < initialHistoryCount} 
+        />
       ))}
       
       <TerminalInput />

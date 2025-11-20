@@ -3,10 +3,10 @@ import { useState, useEffect, useRef } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { HistoryEntry, Project } from "@/types";
 
-export const TerminalLine = ({ entry }: { entry: HistoryEntry }) => {
-  const [displayedContent, setDisplayedContent] = useState("");
+export const TerminalLine = ({ entry, skipAnimation = false }: { entry: HistoryEntry; skipAnimation?: boolean }) => {
+  const [displayedContent, setDisplayedContent] = useState(skipAnimation ? entry.output as string : "");
   const contentRef = useRef(entry.output);
-  const [isTyping, setIsTyping] = useState(true);
+  const [isTyping, setIsTyping] = useState(!skipAnimation);
   const isComponent = entry.type === 'component';
   const shouldReduceMotion = useReducedMotion();
   const lineRef = useRef<HTMLDivElement>(null);
@@ -20,7 +20,7 @@ export const TerminalLine = ({ entry }: { entry: HistoryEntry }) => {
         return;
     }
 
-    if (isComponent || shouldReduceMotion) {
+    if (isComponent || shouldReduceMotion || skipAnimation) {
         setDisplayedContent(content);
         setIsTyping(false);
         return;
@@ -66,7 +66,7 @@ export const TerminalLine = ({ entry }: { entry: HistoryEntry }) => {
         timeoutIdRef.current = null;
       }
     };
-  }, [isComponent, shouldReduceMotion]);
+  }, [isComponent, shouldReduceMotion, skipAnimation]);
 
   // Skip typing on click
   const handleSkip = (e: React.MouseEvent) => {
