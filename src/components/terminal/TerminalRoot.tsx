@@ -5,17 +5,23 @@ import { TerminalLine } from "./TerminalLine";
 import { TerminalInput } from "./TerminalInput";
 
 export const TerminalRoot = () => {
-  const { history } = useTerminalStore();
+  const { history, hasHydrated } = useTerminalStore();
   const containerRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
   const [initialHistoryCount, setInitialHistoryCount] = useState(0);
+  const [isInitialized, setIsInitialized] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
-    // Store the initial history count on mount
-    setInitialHistoryCount(history.length);
   }, []);
+
+  useEffect(() => {
+    if (hasHydrated && !isInitialized) {
+      setInitialHistoryCount(history.length);
+      setIsInitialized(true);
+    }
+  }, [hasHydrated, isInitialized, history.length]);
 
   // Scroll to bottom whenever history changes
   useEffect(() => {

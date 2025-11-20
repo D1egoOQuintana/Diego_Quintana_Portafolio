@@ -14,6 +14,8 @@ interface TerminalState {
   clearHistory: () => void;
   setInputValue: (val: string) => void;
   setIsProcessing: (val: boolean) => void;
+  hasHydrated: boolean;
+  setHasHydrated: (state: boolean) => void;
 }
 
 export const useTerminalStore = create<TerminalState>()(
@@ -24,6 +26,8 @@ export const useTerminalStore = create<TerminalState>()(
       historyIndex: -1,
       isProcessing: false,
       inputValue: '',
+      hasHydrated: false,
+      setHasHydrated: (state) => set({ hasHydrated: state }),
       addEntry: (entry) => set((state) => ({
         history: [
           ...state.history,
@@ -50,6 +54,9 @@ export const useTerminalStore = create<TerminalState>()(
         history: state.history,
         commandHistory: state.commandHistory,
       }),
+      onRehydrateStorage: () => (state) => {
+        state?.setHasHydrated(true);
+      },
     }
   )
 );
