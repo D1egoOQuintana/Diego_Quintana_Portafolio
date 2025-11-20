@@ -1,26 +1,141 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-ring: var(--ring);
+  
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-mono);
+
+  /* Motion Tokens */
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  
+  --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-in-out-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+:root {
+  /* Light Mode (Zinc-50 based) */
+  --background: #F7F7F8;
+  --foreground: #18181B;
+  
+  --muted: #E4E4E7;
+  --muted-foreground: #71717A;
+  
+  --border: #E4E4E7;
+  
+  /* Accent: Lime-600 */
+  --accent: #65A30D;
+  --accent-foreground: #FFFFFF;
+  
+  --success: #16A34A;
+  --warning: #D97706;
+  --danger: #DC2626;
+  
+  --ring: #65A30D;
+  
+  /* Phosphor Glow - Subtle in Light Mode */
+  --glow-color: rgba(101, 163, 13, 0.3);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Dark Mode (Zinc-950 based) */
+    --background: #0B0B0C;
+    --foreground: #E4E4E7;
+    
+    --muted: #27272A;
+    --muted-foreground: #A1A1AA;
+    
+    --border: #27272A;
+    
+    /* Accent: Lime-400 */
+    --accent: #A3E635;
+    --accent-foreground: #000000;
+    
+    --success: #4ADE80;
+    --warning: #FBBF24;
+    --danger: #F87171;
+    
+    --ring: #A3E635;
+    
+    /* Phosphor Glow - Stronger in Dark Mode */
+    --glow-color: rgba(163, 230, 53, 0.5);
+  }
+}
+
+/* Manual Dark Mode Override (for next-themes class="dark") */
+.dark {
+  --background: #0B0B0C;
+  --foreground: #E4E4E7;
+  --muted: #27272A;
+  --muted-foreground: #A1A1AA;
+  --border: #27272A;
+  --accent: #A3E635;
+  --accent-foreground: #000000;
+  --success: #4ADE80;
+  --warning: #FBBF24;
+  --danger: #F87171;
+  --ring: #A3E635;
+  --glow-color: rgba(163, 230, 53, 0.5);
+}
+
+/* Utilities for Motion */
+.animate-in-fade {
+  animation: fadeIn var(--duration-slow) var(--ease-out-quad) forwards;
+}
+
+.text-glow {
+  text-shadow: 0 0 10px var(--glow-color);
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { text-shadow: 0 0 10px var(--glow-color); }
+  50% { text-shadow: 0 0 20px var(--glow-color), 0 0 30px var(--glow-color); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); filter: blur(4px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+.command-response {
+  animation: slideInUp 0.3s ease-out;
+}
+
+@keyframes slideInUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(15px);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0);
   }
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
